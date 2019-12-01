@@ -1,7 +1,5 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.sproutsocial/nsq-j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.sproutsocial/nsq-j)
-
 # nsq-j
-Java client for the [NSQ](http://nsq.io) realtime distributed messaging platform
+Java client for the [NSQ](http://nsq.io) real-time distributed messaging platform
 
 ## Install
 
@@ -12,12 +10,6 @@ Add a dependency using Maven
   <artifactId>nsq-j</artifactId>
   <version>0.9.4</version>
 </dependency>
-```
-or Gradle
-```
-dependencies {
-  compile 'com.sproutsocial:nsq-j:0.9.4'
-}
 ```
 
 ## Publish
@@ -74,6 +66,3 @@ Your handler methods should be thread safe, make them `synchronized` if you are 
 
 `Client.getDefaultClient().stop()` waits for in-flight messages, closes all connections
 and allows all threads to exit.
-
-[Javadocs](https://sproutsocial.github.io/nsq-j/)
-
