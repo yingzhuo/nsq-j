@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.yingzhuo.nsqj.springboot.autoconfig.NsqSpringBootAutoConfigBasic,\
+com.github.yingzhuo.nsqj.springboot.autoconfig.NsqSpringBootAutoConfigPublisher,\
+com.github.yingzhuo.nsqj.springboot.autoconfig.NsqSpringBootAutoConfigSubscriber

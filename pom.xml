@@ -8,6 +8,7 @@
     <modules>
         <module>nsq-j-client</module>
         <module>nsq-j-spring</module>
+        <module>nsq-j-spring-boot</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -116,7 +117,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>com.github.yingzhuo</groupId>
                 <artifactId>nsq-j-client</artifactId>
