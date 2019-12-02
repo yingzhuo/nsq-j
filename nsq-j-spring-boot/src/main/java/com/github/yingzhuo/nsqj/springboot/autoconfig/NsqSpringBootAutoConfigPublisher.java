@@ -31,6 +31,7 @@ public class NsqSpringBootAutoConfigPublisher {
         factory.setBatchConfigs(props.getBatchConfigs());
         factory.setNsqd(props.getNsqdHost());
         factory.setFailoverNsqd(props.getFailoverNsqdHost());
+        factory.setFailoverDurationSecs(props.getFailoverDurationSecs());
 
         Config cfg = new Config();
         cfg.setClientId(props.getConfig().getClientId());

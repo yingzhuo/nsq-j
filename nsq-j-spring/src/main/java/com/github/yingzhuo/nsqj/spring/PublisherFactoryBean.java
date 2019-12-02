@@ -27,7 +27,8 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
     private String nsqd = "localhost";
     private String failoverNsqd;
     private Config config;
-    public List<BatchConfig> batchConfigs;
+    private List<BatchConfig> batchConfigs;
+    private int FailoverDurationSecs = 300;
 
     public Publisher getObject() {
         final Publisher publisher = new Publisher(client, nsqd, failoverNsqd);
@@ -42,6 +43,7 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
             }
         }
 
+        publisher.setFailoverDurationSecs(FailoverDurationSecs);
         return publisher;
     }
 
@@ -77,4 +79,7 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
         this.batchConfigs = batchConfigs;
     }
 
+    public void setFailoverDurationSecs(int failoverDurationSecs) {
+        FailoverDurationSecs = failoverDurationSecs;
+    }
 }

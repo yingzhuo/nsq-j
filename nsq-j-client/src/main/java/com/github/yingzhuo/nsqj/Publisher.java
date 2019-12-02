@@ -126,7 +126,7 @@ public class Publisher extends BasePubSub {
         }
     }
 
-    public synchronized void publishDeferred(String topic, String data, long delay, TimeUnit unit) {
+    public void publishDeferred(String topic, String data, long delay, TimeUnit unit) {
         publishDeferred(topic, data.getBytes(StandardCharsets.UTF_8), delay, unit);
     }
 
@@ -143,6 +143,10 @@ public class Publisher extends BasePubSub {
                 publishFailover(topic, data);
             }
         }
+    }
+
+    public void publish(String topic, Messages messages) {
+        publish(topic, messages.getData());
     }
 
     @GuardedBy("this")
@@ -179,7 +183,7 @@ public class Publisher extends BasePubSub {
         batcher.publish(data);
     }
 
-    public synchronized void publishBuffered(String topic, String data) {
+    public void publishBuffered(String topic, String data) {
         publishBuffered(topic, data.getBytes(StandardCharsets.UTF_8));
     }
 

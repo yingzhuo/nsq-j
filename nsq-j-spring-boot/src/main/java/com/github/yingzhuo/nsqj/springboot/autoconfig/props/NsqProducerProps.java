@@ -36,6 +36,8 @@ public class NsqProducerProps implements InitializingBean {
 
     private ConfigProps config = new ConfigProps();
 
+    private int FailoverDurationSecs = 300;
+
     @Override
     public void afterPropertiesSet() {
         if (enabled) {
