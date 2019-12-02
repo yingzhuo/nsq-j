@@ -22,10 +22,7 @@ Add a dependency using Maven
 </dependency>
 ```
 
-## Use the client directly
+## Wiki
 
-[wiki](.github/wiki-nsq-j-client.md)
-
-## Use spring-boot (recommended)
-
-[wiki](.github/wiki-nsq-j-springboot.md)
+* [Use the client directly](.github/wiki-nsq-j-client.md)
+* [Use spring-boot (recommended)](.github/wiki-nsq-j-springboot.md)
