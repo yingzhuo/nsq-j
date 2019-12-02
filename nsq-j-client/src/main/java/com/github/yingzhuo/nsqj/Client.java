@@ -20,6 +20,10 @@ import java.util.concurrent.*;
 
 import static com.github.yingzhuo.nsqj.Util.*;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 @ThreadSafe
 public class Client {

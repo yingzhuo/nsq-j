@@ -13,6 +13,9 @@ import lombok.*;
 /**
  * nsqd settings that can't be changed by the client.
  * returned in response to IDENTIFY command.
+ *
+ * @author 应卓
+ * @since 1.0.0
  */
 @Getter
 @Setter

@@ -13,6 +13,9 @@ import java.util.Set;
 
 /**
  * Subscribe from a given set of nsqd hosts instead of using the lookup service.
+ *
+ * @author 应卓
+ * @since 1.0.0
  */
 public class DirectSubscriber extends Subscriber {
 

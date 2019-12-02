@@ -13,6 +13,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 abstract class BasePubSub {
 
     protected Config config = new Config();

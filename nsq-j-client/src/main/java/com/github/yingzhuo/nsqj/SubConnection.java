@@ -13,6 +13,10 @@ import net.jcip.annotations.GuardedBy;
 
 import java.io.IOException;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 class SubConnection extends Connection {
 

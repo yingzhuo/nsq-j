@@ -10,6 +10,10 @@ package com.github.yingzhuo.nsqj;
 
 import java.util.List;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 class LookupResponse {
 
     private LookupResponse data; //older versions wrap responses in a "data" field

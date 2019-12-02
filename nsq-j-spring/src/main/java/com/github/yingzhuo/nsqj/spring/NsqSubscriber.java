@@ -10,6 +10,10 @@ package com.github.yingzhuo.nsqj.spring;
 
 import java.lang.annotation.*;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)

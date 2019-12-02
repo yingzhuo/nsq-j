@@ -14,6 +14,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @ConditionalOnExpression("'${nsq.publisher.enabled}' == 'true' or '${nsq.subscriber.enabled}' == 'true'")
 public class NsqSpringBootAutoConfigBasic {
 

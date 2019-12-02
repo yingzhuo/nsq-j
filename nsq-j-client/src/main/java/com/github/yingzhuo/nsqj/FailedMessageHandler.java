@@ -8,6 +8,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.github.yingzhuo.nsqj;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 public interface FailedMessageHandler {
 
     void failed(String topic, String channel, Message msg);

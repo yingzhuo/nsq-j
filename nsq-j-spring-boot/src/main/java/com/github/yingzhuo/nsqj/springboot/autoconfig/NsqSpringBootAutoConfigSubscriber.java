@@ -16,6 +16,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @EnableConfigurationProperties(NsqSubscriberProps.class)
 @AutoConfigureAfter(NsqSpringBootAutoConfigBasic.class)
 @ConditionalOnProperty(prefix = "nsq.subscriber", name = "enabled", havingValue = "true")

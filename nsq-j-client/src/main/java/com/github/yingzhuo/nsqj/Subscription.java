@@ -15,6 +15,10 @@ import java.util.concurrent.ScheduledFuture;
 
 import static com.github.yingzhuo.nsqj.Util.copy;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 class Subscription extends BasePubSub {
 

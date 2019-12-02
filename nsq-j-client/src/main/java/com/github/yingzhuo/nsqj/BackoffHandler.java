@@ -11,6 +11,10 @@ package com.github.yingzhuo.nsqj;
 import lombok.extern.slf4j.Slf4j;
 import net.jcip.annotations.ThreadSafe;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 @ThreadSafe
 public class BackoffHandler implements MessageHandler {

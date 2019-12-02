@@ -8,6 +8,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.github.yingzhuo.nsqj;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 class NSQMessage implements Message {
 
     private final long timestamp;

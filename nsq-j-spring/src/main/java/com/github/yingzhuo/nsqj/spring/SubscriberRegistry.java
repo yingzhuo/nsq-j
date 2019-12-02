@@ -18,6 +18,10 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 public class SubscriberRegistry implements BeanPostProcessor {
 

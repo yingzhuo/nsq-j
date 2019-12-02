@@ -20,6 +20,10 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 abstract class Util {
 

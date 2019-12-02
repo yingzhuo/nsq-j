@@ -25,6 +25,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 import static com.github.yingzhuo.nsqj.Util.checkArgument;
 import static com.github.yingzhuo.nsqj.Util.checkNotNull;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 @ThreadSafe
 public class Subscriber extends BasePubSub {

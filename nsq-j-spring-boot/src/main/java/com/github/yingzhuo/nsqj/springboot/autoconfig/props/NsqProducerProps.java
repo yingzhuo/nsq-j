@@ -11,24 +11,37 @@ package com.github.yingzhuo.nsqj.springboot.autoconfig.props;
 import com.github.yingzhuo.nsqj.spring.config.BatchConfig;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Getter
 @Setter
 @ConfigurationProperties(prefix = "nsq.publisher")
-public class NsqProducerProps {
+public class NsqProducerProps implements InitializingBean {
 
     private boolean enabled = false;
 
-    private String NsqdHost;
+    private String nsqdHost;
 
     private String failoverNsqdHost;
 
     private List<BatchConfig> batchConfigs;
 
     private ConfigProps config = new ConfigProps();
+
+    @Override
+    public void afterPropertiesSet() {
+        if (enabled) {
+            Assert.hasText(getNsqdHost(), (String) null);
+        }
+    }
 
     @Getter
     @Setter

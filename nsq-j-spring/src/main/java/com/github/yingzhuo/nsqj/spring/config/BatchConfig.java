@@ -12,6 +12,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Getter
 @Setter
 public class BatchConfig {

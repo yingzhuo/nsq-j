@@ -10,6 +10,10 @@ package com.github.yingzhuo.nsqj;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 public interface Message {
 
     String getTopic();

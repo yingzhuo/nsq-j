@@ -14,6 +14,9 @@ import lombok.*;
  * Configuration sent to nsqd with the IDENTIFY command
  * http://nsq.io/clients/tcp_protocol_spec.html#identify
  * to negotiate the features to use on a connection.
+ *
+ * @author 应卓
+ * @since 1.0.0
  */
 @Getter
 @Setter

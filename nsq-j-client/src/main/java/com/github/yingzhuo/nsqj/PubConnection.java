@@ -11,6 +11,10 @@ package com.github.yingzhuo.nsqj;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 class PubConnection extends Connection {
 
     private final Publisher publisher;

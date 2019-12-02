@@ -29,6 +29,10 @@ import java.util.zip.InflaterInputStream;
 
 import static com.github.yingzhuo.nsqj.Util.firstNonNull;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 abstract class Connection extends BasePubSub implements Closeable {
 

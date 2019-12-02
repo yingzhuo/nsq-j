@@ -14,6 +14,10 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
+/**
+ * @author 应卓
+ * @since 1.0.0
+ */
 @Slf4j
 public class ClientFactoryBean implements FactoryBean<Client>, InitializingBean, DisposableBean {
 
