@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  _   _ ____   ___            _
+ * | \ | / ___| / _ \          | |
+ * |  \| \___ \| | | |_____ _  | |
+ * | |\  |___) | |_| |_____| |_| |
+ * |_| \_|____/ \__\_\      \___/                                           https://github.com/yingzhuo/nsq-j
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.github.yingzhuo.nsqj;
 
 import lombok.extern.slf4j.Slf4j;
@@ -5,6 +13,7 @@ import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +39,10 @@ public class Publisher extends BasePubSub {
 
     private static final int DEFAULT_MAX_BATCH_SIZE = 16 * 1024;
     private static final int DEFAULT_MAX_BATCH_DELAY = 300;
+
+    public Publisher(Client client, String nsqd) {
+        this(client, nsqd, null);
+    }
 
     public Publisher(Client client, String nsqd, String failoverNsqd) {
         super(client);
@@ -90,6 +103,10 @@ public class Publisher extends BasePubSub {
         }
     }
 
+    public void publish(String topic, String data) {
+        publish(topic, data.getBytes(StandardCharsets.UTF_8));
+    }
+
     public synchronized void publishDeferred(String topic, byte[] data, long delay, TimeUnit unit) {
         checkNotNull(topic);
         checkNotNull(data);
@@ -103,6 +120,10 @@ public class Publisher extends BasePubSub {
             //deferred publish never fails over
             throw new NSQException("deferred publish failed", e);
         }
+    }
+
+    public synchronized void publishDeferred(String topic, String data, long delay, TimeUnit unit) {
+        publishDeferred(topic, data.getBytes(StandardCharsets.UTF_8), delay, unit);
     }
 
     public synchronized void publish(String topic, List<byte[]> dataList) {
@@ -119,6 +140,10 @@ public class Publisher extends BasePubSub {
             }
         }
     }
+
+//    public synchronized void publish2(String topic, List<String> dataList) {
+//        publish(topic, dataList.stream().map(it -> it.getBytes(StandardCharsets.UTF_8)).collect(Collectors.toList()));
+//    }
 
     @GuardedBy("this")
     private void publishFailover(String topic, byte[] data) {
@@ -152,6 +177,10 @@ public class Publisher extends BasePubSub {
             batchers.put(topic, batcher);
         }
         batcher.publish(data);
+    }
+
+    public synchronized void publishBuffered(String topic, String data) {
+        publishBuffered(topic, data.getBytes(StandardCharsets.UTF_8));
     }
 
     public synchronized void setBatchConfig(String topic, int maxSizeBytes, int maxDelayMillis) {

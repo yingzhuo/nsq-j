@@ -1,3 +1,11 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  _   _ ____   ___            _
+ * | \ | / ___| / _ \          | |
+ * |  \| \___ \| | | |_____ _  | |
+ * | |\  |___) | |_| |_____| |_| |
+ * |_| \_|____/ \__\_\      \___/                                           https://github.com/yingzhuo/nsq-j
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.github.yingzhuo.nsqj;
 
 import lombok.extern.slf4j.Slf4j;
@@ -88,7 +96,7 @@ class Batcher {
                 toSend = batch;
                 int capacity = Math.min(maxSize, (int) (toSend.size() * 1.2));
                 capacity = Math.max(10, capacity);
-                batch = new ArrayList<byte[]>(capacity);
+                batch = new ArrayList<>(capacity);
                 size = 0;
             }
         }

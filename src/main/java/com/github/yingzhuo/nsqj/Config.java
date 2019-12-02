@@ -10,23 +10,33 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Config {
+public class Config implements java.io.Serializable {
 
     private String clientId;
+
     private String hostname;
-    private Boolean featureNegotiation = true;
+
     private Integer heartbeatInterval;
+
     private Integer outputBufferSize;
+
     private Integer outputBufferTimeout;
+
     private Boolean tlsV1;
+
     private Boolean snappy;
+
     private Boolean deflate;
+
     private Integer deflateLevel;
+
     private Integer sampleRate;
-    private String userAgent = "nsq-j/1.0";
+
     private Integer msgTimeout;
 
+    private Boolean featureNegotiation = true;
+
+    private String userAgent = "nsq-j/1.0";
 }
