@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Bean;
 public class NsqSpringBootAutoConfigSubscriber {
 
     @Bean
-    public BeanPostProcessor beanPostProcessor() {
+    public BeanPostProcessor nsqSubscriberRegistry() {
         return new SubscriberRegistry();
     }
 

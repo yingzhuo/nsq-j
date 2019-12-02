@@ -1,18 +1,26 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  _   _ ____   ___            _
+ * | \ | / ___| / _ \          | |
+ * |  \| \___ \| | | |_____ _  | |
+ * | |\  |___) | |_| |_____| |_| |
+ * |_| \_|____/ \__\_\      \___/                                           https://github.com/yingzhuo/nsq-j
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.github.yingzhuo.nsqj.springboot.autoconfig;
 
 import com.github.yingzhuo.nsqj.spring.ClientFactoryBean;
 import com.github.yingzhuo.nsqj.spring.config.BatchConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.context.annotation.Bean;
-import org.springframework.format.FormatterRegistry;
 
-import java.util.Optional;
-
+@ConditionalOnExpression("'${nsq.publisher.enabled}' == 'true' or '${nsq.subscriber.enabled}' == 'true'")
 public class NsqSpringBootAutoConfigBasic {
 
-    @Autowired(required = false)
-    public void config(FormatterRegistry registry) {
-        Optional.ofNullable(registry).ifPresent(x -> x.addConverter(new BatchConfig.BatchConfigConverter()));
+    @Bean
+    @ConfigurationPropertiesBinding
+    public BatchConfig.BatchConfigConverter batchConfigConverter() {
+        return new BatchConfig.BatchConfigConverter();
     }
 
     @Bean
