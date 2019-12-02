@@ -6,22 +6,16 @@
  * |_| \_|____/ \__\_\      \___/                                           https://github.com/yingzhuo/nsq-j
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-package com.github.yingzhuo.nsqj.springboot.autoconfig;
+package com.github.yingzhuo.nsqj.spring;
 
-import com.github.yingzhuo.nsqj.spring.ClientFactoryBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
-import org.springframework.context.annotation.Bean;
+import com.github.yingzhuo.nsqj.Subscriber;
 
 /**
  * @author 应卓
- * @since 1.0.0
+ * @since 1.0.1
  */
-@ConditionalOnExpression("'${nsq.publisher.enabled}' == 'true' or '${nsq.subscriber.enabled}' == 'true'")
-public class NsqSpringBootAutoConfigBasic {
+public interface SubscriberConfigurer {
 
-    @Bean
-    public ClientFactoryBean nsqClient() {
-        return new ClientFactoryBean();
-    }
+    public void config(Subscriber subscriber, String topic, String channel);
 
 }

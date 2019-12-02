@@ -9,10 +9,14 @@
 package com.github.yingzhuo.nsqj.springboot.autoconfig;
 
 import com.github.yingzhuo.nsqj.Config;
+import com.github.yingzhuo.nsqj.spring.PublisherConfigurer;
 import com.github.yingzhuo.nsqj.spring.PublisherFactoryBean;
+import com.github.yingzhuo.nsqj.spring.config.BatchConfig;
 import com.github.yingzhuo.nsqj.springboot.autoconfig.props.NsqProducerProps;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
@@ -25,6 +29,15 @@ import org.springframework.context.annotation.Bean;
 @ConditionalOnProperty(prefix = "nsq.publisher", name = "enabled", havingValue = "true")
 public class NsqSpringBootAutoConfigPublisher {
 
+    @Autowired(required = false)
+    private PublisherConfigurer publisherConfigurer;
+
+    @Bean
+    @ConfigurationPropertiesBinding
+    public BatchConfig.BatchConfigConverter batchConfigConverter() {
+        return new BatchConfig.BatchConfigConverter();
+    }
+
     @Bean
     public PublisherFactoryBean publisher(NsqProducerProps props) {
         final PublisherFactoryBean factory = new PublisherFactoryBean();
@@ -32,6 +45,7 @@ public class NsqSpringBootAutoConfigPublisher {
         factory.setNsqd(props.getNsqdHost());
         factory.setFailoverNsqd(props.getFailoverNsqdHost());
         factory.setFailoverDurationSecs(props.getFailoverDurationSecs());
+        factory.setPublisherConfigurer(publisherConfigurer);
 
         Config cfg = new Config();
         cfg.setClientId(props.getConfig().getClientId());

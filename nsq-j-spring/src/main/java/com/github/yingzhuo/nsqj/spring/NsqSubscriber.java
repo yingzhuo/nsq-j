@@ -32,4 +32,6 @@ public @interface NsqSubscriber {
 
     public String[] nsqdHosts() default {};
 
+    public int defaultMaxInFlight() default 200;
+
 }

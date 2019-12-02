@@ -29,6 +29,7 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
     private Config config;
     private List<BatchConfig> batchConfigs;
     private int FailoverDurationSecs = 300;
+    private PublisherConfigurer publisherConfigurer;
 
     public Publisher getObject() {
         final Publisher publisher = new Publisher(client, nsqd, failoverNsqd);
@@ -44,6 +45,11 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
         }
 
         publisher.setFailoverDurationSecs(FailoverDurationSecs);
+
+        if (this.publisherConfigurer != null) {
+            publisherConfigurer.config(publisher);
+        }
+
         return publisher;
     }
 
@@ -82,4 +88,9 @@ public class PublisherFactoryBean implements FactoryBean<Publisher>, Initializin
     public void setFailoverDurationSecs(int failoverDurationSecs) {
         FailoverDurationSecs = failoverDurationSecs;
     }
+
+    public void setPublisherConfigurer(PublisherConfigurer publisherConfigurer) {
+        this.publisherConfigurer = publisherConfigurer;
+    }
+
 }

@@ -6,63 +6,26 @@ Java client for the [NSQ](http://nsq.io) real-time distributed messaging platfor
 Add a dependency using Maven
 ```xml
 <dependency>
-  <groupId>com.sproutsocial</groupId>
-  <artifactId>nsq-j</artifactId>
-  <version>0.9.4</version>
+  <groupId>com.github.yingzhuo</groupId>
+  <artifactId>nsq-j-client</artifactId>
+  <version>1.0.1</version>
+</dependency>
+<dependency>
+  <groupId>com.github.yingzhuo</groupId>
+  <artifactId>nsq-j-spring</artifactId>
+  <version>1.0.1</version>
+</dependency>
+<dependency>
+  <groupId>com.github.yingzhuo</groupId>
+  <artifactId>nsq-j-spring-boot</artifactId>
+  <version>1.0.1</version>
 </dependency>
 ```
 
-## Publish
-```java
-Publisher publisher = new Publisher("nsqd-host");
+## Use the client directly
 
-byte[] data = "Hello nsq".getBytes();
-publisher.publishBuffered("example_topic", data);
-```
-Buffers messages to improve performance (to 16k or 300 milliseconds by default),
+[wiki](.github/wiki-nsq-j-client.md)
 
-`publisher.publish("example_topic", data)` publishes synchronously and returns
-after nsqd responds `OK`
+## Use spring-boot (recommended)
 
-You can batch messages manually and publish them all at once with
-`publish(String topic, List<byte[]> messages)`
-
-## Subscribe
-```java
-public class PubExample {
-
-    public static void handleData(byte[] data) {
-        System.out.println("Received:" + new String(data));
-    }
-
-    public static void main(String[] args) {
-        Subscriber subscriber = new Subscriber("lookup-host-1", "lookup-host-2");
-        subscriber.subscribe("example_topic", "test_channel", PubExample::handleData);
-    }
-}
-```
-Uses the lookup-hosts to discover any servers publishing example_topic.
-
-If handleData returns normally `FIN` is sent to nsqd to finish the message,
-if the handler throws any exception then the message is requeued and processing is
-delayed using exponential backoff. Delay times and max attempts  are configurable.
-
-For complete control handle the Message directly:
-```java
-    public static void handleMessage(Message msg) {
-        try {
-            byte[] data = msg.getData();
-            // ... complicated work ...
-            msg.finish();
-        }
-        catch (Exception e) {
-            msg.requeue();
-        }
-    }
-```
-
-Publishers and Subscribers are thread safe and should be reused.
-Your handler methods should be thread safe, make them `synchronized` if you are unsure.
-
-`Client.getDefaultClient().stop()` waits for in-flight messages, closes all connections
-and allows all threads to exit.
+[wiki](.github/wiki-nsq-j-springboot.md)
